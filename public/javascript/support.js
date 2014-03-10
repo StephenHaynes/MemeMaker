@@ -15,9 +15,20 @@ function findImagesOnGoogle(options) {
       img.data('url', result.url);
       img.appendTo(options.container);
     }
+    $("#search-results img").hover( 
+      function() { $(this).animate({'height':'+=20px','width':'+=20px'}) }, 
+      function() { $(this).animate({'height':'-=20px','width':'-=20px'}) 
+    });
   }, null);
-  imageSearch.setResultSetSize(8);
+  imageSearch.setResultSetSize(google.search.Search.LARGE_RESULTSET);
   imageSearch.execute(options.keywords);  
+}
+
+function findImageOnGoogle2(options) {
+  $(options.container).empty();
+  $(options.container).append($("<p>").text("Searching..."));
+
+  var imageSearch = new google.search.CustomSearchControl()
 }
 
 function saveParametersToHash() {

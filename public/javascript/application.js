@@ -9,6 +9,12 @@ $(document).on('click', '#search-results img', function() {
 	$("#workspace").append(img);
 });
 
+$(document).keypress( function(e) {
+	if(e.which == 13) {
+		findImagesOnGoogle({keywords: $('#search-term').val(), container: '#search-results'})
+	}
+});
+
 $(document).on('input', '#text', function() {
 	$("#caption").text($(this).val());
 });
@@ -32,4 +38,9 @@ $(document).on('change', '#size', function() {
 $(document).on('change', '#colour', function() {
 	$("#caption").css("color", $(this).val())
 });
+
+$(document).on('change', '#align', function() {
+	$("#caption").css("text-align", $(this).val())
+});
+
 
